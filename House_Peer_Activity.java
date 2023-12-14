@@ -1,4 +1,5 @@
 import java.util.*;
+
 class student {
     int Rollno;
     String name;
@@ -19,22 +20,23 @@ class student {
         System.out.println("Age : " + age);
     }
 }
+
 public class House_Peer_Activity {
     public static void main(String[] args) {
-        HashMap <Integer,student> database = new HashMap<>();
-        try{
-            while(true){
+        HashMap<Integer, student> database = new HashMap<>();
+        try {
+            while (true) {
 
                 System.out.println("""
-                    Welcome to Student Database Management system ...
-                    Menu : 
-                    1. Add New Student Data
-                    2. View Student
-                    3. Search Student (Using thier Roll Number)
-                    4. Calculate Average Marks
-                    5. Exit
-                    Please enter the one of the number in front of each action that you want to execute!!!
-                    """);
+                        Welcome to Student Database Management system ...
+                        Menu :
+                        1. Add New Student Data
+                        2. View Student
+                        3. Search Student (Using thier Roll Number)
+                        4. Calculate Average Marks
+                        5. Exit
+                        Please enter the one of the number in front of each action that you want to execute!!!
+                        """);
                 Scanner input = new Scanner(System.in);
                 System.out.print("Please enter your choice of number : ");
                 int choice = input.nextInt();
@@ -53,15 +55,15 @@ public class House_Peer_Activity {
                         System.out.print("Please enter the student's Marks :");
                         int Mark = input.nextInt();
                         input.nextLine();
-                        if(Mark<0){
+                        if (Mark < 0) {
                             System.out.println("Please enter the a valid Mark");
                             continue;
                         }
-                        student data = new student(age,rollno,Mark,name);
-                        database.put(rollno,data);
+                        student data = new student(age, rollno, Mark, name);
+                        database.put(rollno, data);
                         break;
                     case 2:
-                        for(student i : database.values()){
+                        for (student i : database.values()) {
                             i.viewData();
                         }
                         System.out.println("**************************************************");
@@ -71,11 +73,11 @@ public class House_Peer_Activity {
                         int find = input.nextInt();
                         input.nextLine();
                         student printer = database.get(find);
-                        if(printer != null){
-                            System.out.println("Data of Student with the roll number :"+ find);
+                        if (printer != null) {
+                            System.out.println("Data of Student with the roll number :" + find);
                             printer.viewData();
-                        }else{
-                            System.out.println("Data is not available with Roll Number :"+find);
+                        } else {
+                            System.out.println("Data is not available with Roll Number :" + find);
                         }
                         System.out.println("**************************************************");
 
@@ -83,10 +85,10 @@ public class House_Peer_Activity {
                     case 4:
                         int sum = 0;
                         int count = database.size();
-                        for(student i : database.values()){
+                        for (student i : database.values()) {
                             sum += i.Marks;
                         }
-                        System.out.println("The total average is : "+(sum/count));
+                        System.out.println("The total average is : " + (sum / count));
                         System.out.println("**************************************************");
                         break;
                     case 5:
@@ -94,8 +96,7 @@ public class House_Peer_Activity {
                         break;
                 }
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
